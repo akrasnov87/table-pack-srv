@@ -12,20 +12,20 @@
       <br />FILE - имя файла это промежуток строк, например 0-10000 или 10000-20000
     </p>
 
-    <h2>Архивы (archive)</h2>
-    <p>Формат URL: /archive/[TABLE_NAME]/[VERSION]/[FILE].zip</p>
+    <h2>Архивы (<a href="zip">zip</a>)</h2>
+    <p>Формат URL: /zip/[TABLE_NAME]/[VERSION]/[FILE].zip</p>
     <ul>
-    <%for(var i in archive) {%>
+    <%for(var i in zip) {%>
       <li>
           <%=i%>
           <ul>
-            <%for(var j = 0; j < archive[i].length; j++) {%>
+            <%for(var j = 0; j < zip[i].length; j++) {%>
               <li>
-                  <span style="font-size: 14px;"><%=archive[i][j].VERSION %> от <%=getDate(archive[i][j].DATE) %></span><br />
-                  <p style="font-size: 12px;margin-left: 10px;"><b>Общее количество строк:</b> <%=archive[i][j].TOTAL_COUNT %><br />
-                  <b>Количество файлов:</b> <%=archive[i][j].FILE_COUNT %><br />
-                  <b>Количество строк в файле:</b> <%=archive[i][j].PART %><br />
-                  <b>Общий размер:</b> <%=getSize(archive[i][j].SIZE) %></span>
+                  <span style="font-size: 14px;"><%=zip[i][j].VERSION %> от <%=getDate(zip[i][j].DATE) %></span><br />
+                  <p style="font-size: 12px;margin-left: 10px;"><b>Общее количество строк:</b> <%=zip[i][j].TOTAL_COUNT %><br />
+                  <b>Количество файлов:</b> <%=zip[i][j].FILE_COUNT %><br />
+                  <b>Количество строк в файле:</b> <%=zip[i][j].PART %><br />
+                  <b>Общий размер:</b> <%=getSize(zip[i][j].SIZE) %></span>
               </li>
             <%}%>
             </ul>
@@ -33,7 +33,7 @@
     <%}%>
     </ul>
 
-    <h2>CSV с разделителем "|" (csv)</h2>
+    <h2>CSV с разделителем "|" (<a href="csv">csv</a>)</h2>
     <p>Формат URL: /csv/[TABLE_NAME]/[VERSION]/[FILE].csv</p>
     <ul>
     <%for(var i in csv) {%>
@@ -54,7 +54,7 @@
     <%}%>
     </ul>
 
-    <h2>JSON (json)</h2>
+    <h2>JSON (<a href="json">json</a>)</h2>
     <p>Формат URL: /json/[TABLE_NAME]/[VERSION]/[FILE].json</p>
     <ul>
     <%for(var i in json) {%>

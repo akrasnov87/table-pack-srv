@@ -10,16 +10,16 @@ var moment = require('moment');
 /* GET home page. */
 router.get('/', async function(req, res, next) {
 
-    var archive = join(__dirname, '../', 'public', 'zip');
+    var zip = join(__dirname, '../', 'public', 'zip');
     var csv = join(__dirname, '../', 'public', 'csv');
     var json = join(__dirname, '../', 'public', 'json');
 
-    var archiveItems = await fsUtil.getTables(archive);
+    var zipItems = await fsUtil.getTables(zip);
     var csvItems = await fsUtil.getTables(csv);
     var jsonItems = await fsUtil.getTables(json);
 
     res.render('index', { 
-        archive: archiveItems,
+        zip: zipItems,
         csv: csvItems,
         json: jsonItems,
         getDate: function (input) {
