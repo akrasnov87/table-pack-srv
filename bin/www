@@ -15,6 +15,7 @@ var args = require("args-parser")(process.argv);
 
 var port = normalizePort(process.env.PORT || args.port || '3000');
 app.set('port', port);
+app.set('vPath', process.env.virtualDirPath || '');
 
 /**
  * Create HTTP server.
