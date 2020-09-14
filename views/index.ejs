@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Репозиторий данных</title>
+  </head>
+  <body>
+
+    <h3>Описание параметров адресной строки</h3>
+    <p>
+      TABLE_NAME - имя таблицы для загрузки
+      <br />VERSION - версия
+      <br />FILE - имя файла это промежуток строк, например 0-10000 или 10000-20000
+    </p>
+
+    <h2>Архивы (archive)</h2>
+    <p>Формат URL: /archive/[TABLE_NAME]/[VERSION]/[FILE].zip</p>
+    <ul>
+    <%for(var i in archive) {%>
+      <li>
+          <%=i%>
+          <ul>
+            <%for(var j = 0; j < archive[i].length; j++) {%>
+              <li>
+                  <span style="font-size: 14px;"><%=archive[i][j].VERSION %> от <%=getDate(archive[i][j].DATE) %></span><br />
+                  <p style="font-size: 12px;margin-left: 10px;"><b>Общее количество строк:</b> <%=archive[i][j].TOTAL_COUNT %><br />
+                  <b>Количество файлов:</b> <%=archive[i][j].FILE_COUNT %><br />
+                  <b>Количество строк в файле:</b> <%=archive[i][j].PART %><br />
+                  <b>Общий размер:</b> <%=getSize(archive[i][j].SIZE) %></span>
+              </li>
+            <%}%>
+            </ul>
+      </li>
+    <%}%>
+    </ul>
+
+    <h2>CSV с разделителем "|" (csv)</h2>
+    <p>Формат URL: /csv/[TABLE_NAME]/[VERSION]/[FILE].csv</p>
+    <ul>
+    <%for(var i in csv) {%>
+      <li>
+          <%=i%>
+          <ul>
+            <%for(var j = 0; j < csv[i].length; j++) {%>
+              <li>
+                  <span style="font-size: 14px;"><%=csv[i][j].VERSION %> от <%=getDate(csv[i][j].DATE) %></span><br />
+                  <p style="font-size: 12px;margin-left: 10px;"><b>Общее количество строк:</b> <%=csv[i][j].TOTAL_COUNT %><br />
+                  <b>Количество файлов:</b> <%=csv[i][j].FILE_COUNT %><br />
+                  <b>Количество строк в файле:</b> <%=csv[i][j].PART %><br />
+                  <b>Общий размер:</b> <%=getSize(csv[i][j].SIZE) %></span>
+              </li>
+            <%}%>
+            </ul>
+      </li>
+    <%}%>
+    </ul>
+
+    <h2>JSON (json)</h2>
+    <p>Формат URL: /json/[TABLE_NAME]/[VERSION]/[FILE].json</p>
+    <ul>
+    <%for(var i in json) {%>
+      <li>
+          <%=i%>
+          <ul>
+            <%for(var j = 0; j < json[i].length; j++) {%>
+              <li>
+                  <span style="font-size: 14px;"><%=json[i][j].VERSION %> от <%=getDate(json[i][j].DATE) %></span><br />
+                  <p style="font-size: 12px;margin-left: 10px;"><b>Общее количество строк:</b> <%=json[i][j].TOTAL_COUNT %><br />
+                  <b>Количество файлов:</b> <%=json[i][j].FILE_COUNT %><br />
+                  <b>Количество строк в файле:</b> <%=json[i][j].PART %><br />
+                  <b>Общий размер:</b> <%=getSize(json[i][j].SIZE) %></span>
+              </li>
+            <%}%>
+            </ul>
+      </li>
+    <%}%>
+    </ul>
+
+  </body>
+</html>
