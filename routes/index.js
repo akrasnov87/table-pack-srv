@@ -1,29 +1,39 @@
+/**
+ * @file routes/index.js
+ * @project table-pack-srv
+ * @author Aleksandr Krasnov
+ */
+
 var express = require('express');
 var router = express.Router();
 
-var fs = require('fs');
 var join = require('path').join;
 var fsUtil = require('../modules/fs-util');
 var moment = require('moment');
 var pkg = require('../package.json');
 
 
-/* GET home page. */
+/**
+ * Главная страница
+ */
 router.get('/', async function(req, res, next) {
 
-    var zip = join(__dirname, '../', 'public', 'zip');
+    var csvZip = join(__dirname, '../', 'public', 'csv-zip');
     var csv = join(__dirname, '../', 'public', 'csv');
     var json = join(__dirname, '../', 'public', 'json');
+    var jsonZip = join(__dirname, '../', 'public', 'json-zip');
 
-    var zipItems = await fsUtil.getTables(zip);
     var csvItems = await fsUtil.getTables(csv);
+    var csvZipItems = await fsUtil.getTables(csvZip);
     var jsonItems = await fsUtil.getTables(json);
+    var jsonZipItems = await fsUtil.getTables(jsonZip);
 
     res.render('index', { 
         version: pkg.version,
-        zip: zipItems,
         csv: csvItems,
+        csvZip: csvZipItems,
         json: jsonItems,
+        jsonZip: jsonZipItems,
         getDate: function (input) {
             return moment(new Date(input)).format("DD.MM.YYYY HH:mm:ss");
         },
@@ -33,7 +43,11 @@ router.get('/', async function(req, res, next) {
     });
 });
 
-
+/**
+ * Получение информации о таблицах с указанным типом
+ * @example
+ * /zip 
+ */
 router.get('/:type', async function(req, res, next) {
     var folder = join(__dirname, '../', 'public', req.params.type);
     var items = await fsUtil.getTables(folder);

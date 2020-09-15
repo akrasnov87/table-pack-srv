@@ -12,20 +12,20 @@
       <br />FILE - имя файла это промежуток строк, например 0-10000 или 10000-20000
     </p>
 
-    <h2>Архивы (<a href="zip">zip</a>)</h2>
-    <p>Формат URL: /zip/[TABLE_NAME]/[VERSION]/[FILE].zip<br />Описание URL: /zip/[TABLE_NAME]/[VERSION]/readme.txt</p>
+    <h2>CSV с разделителем "|" - архив  (<a href="csv-zip">csv-zip</a>)</h2>
+    <p>Формат URL: /csv-zip/[TABLE_NAME]/[VERSION]/[FILE].zip<br />Описание URL: /csv-zip/[TABLE_NAME]/[VERSION]/readme.txt</p>
     <ul>
-    <%for(var i in zip) {%>
+    <%for(var i in csvZip) {%>
       <li>
           <%=i%>
           <ul>
-            <%for(var j = 0; j < zip[i].length; j++) {%>
+            <%for(var j = 0; j < csvZip[i].length; j++) {%>
               <li>
-                  <span style="font-size: 14px;"><%=zip[i][j].VERSION %> от <%=getDate(zip[i][j].DATE) %></span><br />
-                  <p style="font-size: 12px;margin-left: 10px;"><b>Общее количество строк:</b> <%=zip[i][j].TOTAL_COUNT %><br />
-                  <b>Количество файлов:</b> <%=zip[i][j].FILE_COUNT %><br />
-                  <b>Количество строк в файле:</b> <%=zip[i][j].PART %><br />
-                  <b>Общий размер:</b> <%=getSize(zip[i][j].SIZE) %></span>
+                  <span style="font-size: 14px;"><%=csvZip[i][j].VERSION %> от <%=getDate(csvZip[i][j].DATE) %></span><br />
+                  <p style="font-size: 12px;margin-left: 10px;"><b>Общее количество строк:</b> <%=csvZip[i][j].TOTAL_COUNT %><br />
+                  <b>Количество файлов:</b> <%=csvZip[i][j].FILE_COUNT %><br />
+                  <b>Количество строк в файле:</b> <%=csvZip[i][j].PART %><br />
+                  <b>Общий размер:</b> <%=getSize(csvZip[i][j].SIZE) %></span>
               </li>
             <%}%>
             </ul>
@@ -47,6 +47,27 @@
                   <b>Количество файлов:</b> <%=csv[i][j].FILE_COUNT %><br />
                   <b>Количество строк в файле:</b> <%=csv[i][j].PART %><br />
                   <b>Общий размер:</b> <%=getSize(csv[i][j].SIZE) %></span>
+              </li>
+            <%}%>
+            </ul>
+      </li>
+    <%}%>
+    </ul>
+
+    <h2>JSON - архив (<a href="jsonZip">json-zip</a>)</h2>
+    <p>Формат URL: /json-zip/[TABLE_NAME]/[VERSION]/[FILE].zip<br />Описание URL: /json-zip/[TABLE_NAME]/[VERSION]/readme.txt</p>
+    <ul>
+    <%for(var i in jsonZip) {%>
+      <li>
+          <%=i%>
+          <ul>
+            <%for(var j = 0; j < jsonZip[i].length; j++) {%>
+              <li>
+                  <span style="font-size: 14px;"><%=jsonZip[i][j].VERSION %> от <%=getDate(jsonZip[i][j].DATE) %></span><br />
+                  <p style="font-size: 12px;margin-left: 10px;"><b>Общее количество строк:</b> <%=jsonZip[i][j].TOTAL_COUNT %><br />
+                  <b>Количество файлов:</b> <%=jsonZip[i][j].FILE_COUNT %><br />
+                  <b>Количество строк в файле:</b> <%=jsonZip[i][j].PART %><br />
+                  <b>Общий размер:</b> <%=getSize(jsonZip[i][j].SIZE) %></span>
               </li>
             <%}%>
             </ul>

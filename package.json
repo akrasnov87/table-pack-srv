@@ -1,6 +1,6 @@
 {
   "name": "table-pack-srv",
-  "version": "1.1.502",
+  "version": "1.1.822",
   "birthday": "2020-09-14",
   "private": true,
   "scripts": {
@@ -18,7 +18,11 @@
   },
   "main": "app.js",
   "devDependencies": {},
-  "author": "",
+  "author": "Александр Краснов",
   "license": "ISC",
-  "description": ""
+  "description": "Сервис для загрузки информации сжатые ZIP",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/akrasnov87/table-pack-srv.git"
+  }
 }
