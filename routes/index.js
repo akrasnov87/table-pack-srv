@@ -5,6 +5,7 @@ var fs = require('fs');
 var join = require('path').join;
 var fsUtil = require('../modules/fs-util');
 var moment = require('moment');
+var pkg = require('../package.json');
 
 
 /* GET home page. */
@@ -19,6 +20,7 @@ router.get('/', async function(req, res, next) {
     var jsonItems = await fsUtil.getTables(json);
 
     res.render('index', { 
+        version: pkg.version,
         zip: zipItems,
         csv: csvItems,
         json: jsonItems,
