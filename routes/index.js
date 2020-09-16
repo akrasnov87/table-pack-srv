@@ -51,6 +51,12 @@ router.get('/', async function(req, res, next) {
 router.get('/:type', async function(req, res, next) {
     var folder = join(__dirname, '../', 'public', req.params.type);
     var items = await fsUtil.getTables(folder);
+    for(var i in items) {
+        var item = items[i];
+        item.forEach(it => {
+            delete it.MD5;
+        });
+    }
     res.json(items);
 });
 
