@@ -1,6 +1,6 @@
 {
   "name": "table-pack-srv",
-  "version": "1.1.934",
+  "version": "1.2.651",
   "birthday": "2020-09-14",
   "private": true,
   "scripts": {
@@ -8,13 +8,13 @@
   },
   "dependencies": {
     "args-parser": "^1.1.0",
-    "cookie-parser": "~1.4.4",
     "debug": "~2.6.9",
     "ejs": "~2.6.1",
     "express": "~4.16.1",
     "http-errors": "~1.6.3",
     "moment": "^2.28.0",
-    "morgan": "~1.9.1"
+    "morgan": "~1.9.1",
+    "table-pack": "git+https://github.com/akrasnov87/table-pack.git"
   },
   "main": "app.js",
   "devDependencies": {},

@@ -8,7 +8,7 @@ var express = require('express');
 var router = express.Router();
 
 var join = require('path').join;
-var fsUtil = require('../modules/fs-util');
+var fsUtil = require('table-pack/modules/fs-util');
 var moment = require('moment');
 var pkg = require('../package.json');
 
