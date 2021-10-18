@@ -13,19 +13,28 @@
     </p>
 
     <h2>CSV с разделителем "|" - архив  (<a href="csv-zip">csv-zip</a>)</h2>
-    <p>Формат URL: /csv-zip/[TABLE_NAME]/[VERSION]/[FILE].zip<br />Описание URL: /csv-zip/[TABLE_NAME]/[VERSION]/readme.txt</p>
+    <p>Формат URL: /csv-zip/[TABLE_NAME]/[VERSION]/[DIVISION]/[FILE].zip<br />Описание URL: /csv-zip/[TABLE_NAME]/[VERSION]/[DIVISION]/readme.txt</p>
     <ul>
     <%for(var i in csvZip) {%>
       <li>
-          <%=i%>
+          <%=i%><% if(csvZip[i][0].division != undefined) { %> by Division<%}%>
           <ul>
-            <%for(var j = 0; j < csvZip[i].length; j++) {%>
+            <%for(var j = 0; j < csvZip[i].length; j++) { %>
               <li>
-                  <span style="font-size: 14px;"><%=csvZip[i][j].VERSION %> от <%=getDate(csvZip[i][j].DATE) %></span><br />
-                  <p style="font-size: 12px;margin-left: 10px;"><b>Общее количество строк:</b> <%=csvZip[i][j].TOTAL_COUNT %><br />
-                  <b>Количество файлов:</b> <%=csvZip[i][j].FILE_COUNT %><br />
-                  <b>Количество строк в файле:</b> <%=csvZip[i][j].PART %><br />
-                  <b>Общий размер:</b> <%=getSize(csvZip[i][j].SIZE) %></span>
+                  <% if(csvZip[i][j].division != undefined) { %>
+                    <span style="font-size: 14px;"><%=csvZip[i][j].readme.VERSION %> от <%=getDate(csvZip[i][j].readme.DATE) %> для <%=csvZip[i][j].division %></span>
+                    <!--a style="font-size: 12px;" href="csv-zip/<%=i%>/<%=csvZip[i][j].readme.VERSION %>/<%=csvZip[i][j].readme.DIVISION %>/0-<%=csvZip[i][j].readme.PART %>.zip" target="_blank">пример ссылки (csv-zip/<%=i%>/<%=csvZip[i][j].readme.VERSION %>/<%=csvZip[i][j].readme.DIVISION %>/0-<%=csvZip[i][j].readme.PART %>.zip)</a--><br />
+                    <p style="font-size: 12px;margin-left: 10px;"><b>Общее количество строк:</b> <%=csvZip[i][j].readme.TOTAL_COUNT %><br />
+                    <b>Количество файлов:</b> <%=csvZip[i][j].readme.FILE_COUNT %><br />
+                    <b>Количество строк в файле:</b> <%=csvZip[i][j].readme.PART %><br />
+                    <b>Общий размер:</b> <%=getSize(csvZip[i][j].readme.SIZE) %></span>
+                  <% } else { %>
+                    <span style="font-size: 14px;"><%=csvZip[i][j].VERSION %> от <%=getDate(csvZip[i][j].DATE) %></span><br />
+                    <p style="font-size: 12px;margin-left: 10px;"><b>Общее количество строк:</b> <%=csvZip[i][j].TOTAL_COUNT %><br />
+                    <b>Количество файлов:</b> <%=csvZip[i][j].FILE_COUNT %><br />
+                    <b>Количество строк в файле:</b> <%=csvZip[i][j].PART %><br />
+                    <b>Общий размер:</b> <%=getSize(csvZip[i][j].SIZE) %></span>
+                  <% } %>
               </li>
             <%}%>
             </ul>
